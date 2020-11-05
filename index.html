@@ -25,17 +25,22 @@
 			<br>
 			<br>
 			Country :
-			<select name="country" ng-dropdown-multiselect="" ng-model="country" class="form-control" size="5" multiple="">
+			<select name="country" ng-model="country" class="form-control" size="5" multiple="">
 				<option value=""></option>
 				<option ng-repeat="country in countries" ng-if="country.theatre_id==theatre" value="{{country.country_id}}">{{country.country_name}}</option>
 			</select>
 			<br>
 			<br>
 
+			<span class="required">*</span>
 			Offer Status :
-  <input type="text" id="fname" name="fname"><br>
+  <select name="status">
+  	<option value="In Progress">In Progress</option>
+  	<option value="Completed">Completed</option>
+  </select>
+  <br>
 
-		</div>
+	</div>
 	</div>
 		<script>
 	var app=angular.module("task",[]);
