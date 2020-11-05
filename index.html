@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8"> 
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<div class="box">	
+			Name :
+  			<input type="text" id="fname" name="fname"><br>
+			<div ng-app="task" ng-controller="myCtrl" ng-init="loadregion()">
+			Region :
+			<select name="region" ng-model="region" ng-change="loadtheatre()" class="form-control" size="5" multiple="multiple">
+			<option value=""></option>
+			<option ng-repeat="region in regions" value="{{region.id}}">{{region.name}}</option>
+			</select>
+			<br>
+			<br>
+			Theatre :
+			<select name="theatre"  ng-model="theatre" ng-change="loadcountry()" class="form-control" size="5" multiple="multiple">
+				<option value=""></option>
+				<option ng-repeat="theatre in theatres" ng-if="theatre.region_id==region" value="{{theatre.theatre_id}}">{{theatre.theatre_name}}</option>
+			</select>
+			<br>
+			<br>
+			Country :
+			<select name="country" ng-dropdown-multiselect="" ng-model="country" class="form-control" size="5" multiple="">
+				<option value=""></option>
+				<option ng-repeat="country in countries" ng-if="country.theatre_id==theatre" value="{{country.country_id}}">{{country.country_name}}</option>
+			</select>
+			<br>
+			<br>
+
+			Offer Status :
+  <input type="text" id="fname" name="fname"><br>
+
+		</div>
+	</div>
+		<script>
+	var app=angular.module("task",[]);
+	app.controller('myCtrl',function($scope,$http){
+		$scope.loadregion=function(){
+		
+				$scope.regions=[
+				{"id":"1","name":"Americas"},
+				{"id":"2","name":"APJC"},
+				{"id":"3","name":"EMEAR"},
+				{"id":"4","name":"GETS"}
+				];
+		
+		}
+		$scope.loadtheatre=function(){
+			
+				$scope.theatres=[
+				{"theatre_id":"1","region_id":"1","theatre_name":"Latin America"},
+				{"theatre_id":"2","region_id":"1","theatre_name":"US/Canada"},
+				{"theatre_id":"3","region_id":"2","theatre_name":"APAC"},
+				{"theatre_id":"4","region_id":"2","theatre_name":"Greater China"},
+				{"theatre_id":"5","region_id":"3","theatre_name":"Central"},
+				{"theatre_id":"6","region_id":"3","theatre_name":"Emerging"},
+				{"theatre_id":"7","region_id":"3","theatre_name":"North"},
+				{"theatre_id":"8","region_id":"3","theatre_name":"South"},
+				{"theatre_id":"9","region_id":"3","theatre_name":"UK and Ireland"},
+				{"theatre_id":"10","region_id":"4","theatre_name":"GET"},
+				];
+		
+		}
+
+		$scope.loadcountry=function(){
+		
+				$scope.countries=[
+				{"country_id":"1","theatre_id":"1","country_name":"Brahmas"},
+				{"country_id":"2","theatre_id":"1","country_name":"Brazil"},
+				{"country_id":"3","theatre_id":"1","country_name":"Brahmas"},
+
+				{"country_id":"4","theatre_id":"2","country_name":"USA"},
+				{"country_id":"5","theatre_id":"2","country_name":"Canada"},
+				
+				{"country_id":"6","theatre_id":"3","country_name":"India"},
+				{"country_id":"7","theatre_id":"3","country_name":"Bhutan"},
+				{"country_id":"8","theatre_id":"3","country_name":"Australia"},
+
+				{"country_id":"9","theatre_id":"4","country_name":"China"},
+				{"country_id":"10","theatre_id":"4","country_name":"Hong Kong"},
+
+				{"country_id":"11","theatre_id":"5","country_name":"Japan"},
+
+				{"country_id":"12","theatre_id":"6","country_name":"Austria"},
+
+				{"country_id":"13","theatre_id":"7","country_name":"Angola"},
+				{"country_id":"14","theatre_id":"7","country_name":"Armenia"},
+
+				{"country_id":"15","theatre_id":"8","country_name":"Belgium"},
+				{"country_id":"16","theatre_id":"8","country_name":"Denmark"},
+
+				{"country_id":"17","theatre_id":"9","country_name":"Cyprus"},
+				{"country_id":"18","theatre_id":"9","country_name":"France"},
+
+				{"country_id":"19","theatre_id":"10","country_name":"Ireland"},
+				{"country_id":"20","theatre_id":"10","country_name":"UK"},
+
+				{"country_id":"21","theatre_id":"11","country_name":"GET"},
+				
+				];
+		
+		}
+	});
+    </script>
+	</body>
+</html>

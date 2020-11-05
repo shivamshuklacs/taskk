@@ -1,0 +1,14 @@
+select{
+    width: 350px;
+}
+input{
+	width: 350px;
+}
+div{
+	padding: 20px;
+    overflow:auto;
+	text-align: center;
+}
+.box{
+	margin-top: 90px;
+}
